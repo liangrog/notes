@@ -101,15 +101,30 @@ If the uid shows `[ unknown]`, you can make a decision by:
 
 Signing your git commit
 ---
-If your don't want to use passphrase every time when you commit, can update the signing key passphrase to . However you are at your own risk as if someone obtain your no passphrase signing key, they can pretend to be you.
+Let your git know which signing key to use
 
     $ git config --global user.signingkey [your signing key id]
     
 Then use `-S` on your commit. 
 
-**Note**: If you have passphrase, make sure you have run `export GPG_TTY=$(tty)` or put that in your bash profile
+**Note**: If you have passphrase, make sure you have run `export GPG_TTY=$(tty)` or put that in your bash profile so that the screen can prompt you for passphrase.
 
     $ git commit -S -m 'message' 
+
+If you don't want to enter the passphrase everytime, you could use `gpg-agent`. Simply paste below to your `.bash_profile`
+
+    [ -f ~/.gpg-agent-info ] && source ~/.gpg-agent-info
+    if [ -S "${GPG_AGENT_INFO%%:*}" ]; then
+        export GPG_AGENT_INFO
+    else
+        # Don't start a new one if there is already one running
+        if ! pgrep -x "gpg-agent" > /dev/null
+        then
+            eval $( gpg-agent --daemon --write-env-file ~/.gpg-agent-info )
+        fi
+    fi
+
+    export GPG_TTY=`tty`
 
 For git version < 2, you will need to use alias `commit -S` command for auto signing. For git version 2, auto signing everytime without using `-S` option, run
 
