@@ -113,4 +113,4 @@ Then use `-S` on your commit.
 
 To auto signing everytime without using `-S` option, run
 
-    $ git config commit.gpgsign true
+    $ git config --global commit.gpgsign true
