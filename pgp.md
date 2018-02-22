@@ -101,7 +101,7 @@ If the uid shows `[ unknown]`, you can make a decision by:
 
 Signing your git commit
 ---
-If your don't want to use passphrase every time when you commit, you can update the signing key passphrase to . However you are at your own risk as if someone obtain your no passphrase signing key, they can pretend to be you.
+If your don't want to use passphrase every time when you commit, can update the signing key passphrase to . However you are at your own risk as if someone obtain your no passphrase signing key, they can pretend to be you.
 
     $ git config --global user.signingkey [your signing key id]
     
