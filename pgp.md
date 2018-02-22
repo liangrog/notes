@@ -111,6 +111,6 @@ Then use `-S` on your commit.
 
     $ git commit -S -m 'message' 
 
-To auto signing everytime without using `-S` option, run
+For git version < 2, you will need to use alias `commit -S` command for auto signing. For git version 2, auto signing everytime without using `-S` option, run
 
     $ git config --global commit.gpgsign true
