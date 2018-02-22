@@ -44,7 +44,7 @@ or
   
         $ gpg --send-keys [key id]
 
-2. Send to other key server
+2. Send to other key server, e.g. pgp.mit.edu
 
         $ gpg --keyserver keyserver.com --send-keys [key id]
 
@@ -80,6 +80,10 @@ Import subkeys
 
     $ gpg --import subkeys
 
+If you import subkeys to a differen machine, you will need to import the public key as well. E.g import from a key server:
+
+    $ gpg --keyserver keyserver.com --recv [public key id]
+
 **Restore secret key**
 
 Restore the secret key
@@ -95,3 +99,13 @@ If the uid shows `[ unknown]`, you can make a decision by:
     $ gpg --edit-key [key id]
     $ gpg> trust
 
+Signing your git commit
+---
+If your don't want to use passphrase every time when you commit, you can update the signing key passphrase to empty. However you are at your own risk as if someone obtain your no passphrase signing key, they can pretend to be you.
+
+    $ git config --global user.signingkey [your signing key id]
+    
+Then use `-S` on your commit. 
+**Note**: If you have passphrase, make sure you have run `export GPG_TTY=$(tty)` or put that in your bash profile
+
+    $ git commit -S -m 'message' 
