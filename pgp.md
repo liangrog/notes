@@ -106,6 +106,11 @@ If your don't want to use passphrase every time when you commit, you can update 
     $ git config --global user.signingkey [your signing key id]
     
 Then use `-S` on your commit. 
+
 **Note**: If you have passphrase, make sure you have run `export GPG_TTY=$(tty)` or put that in your bash profile
 
     $ git commit -S -m 'message' 
+
+To auto signing everytime without using `-S` option, run
+
+    $ git config commit.gpgsign true
