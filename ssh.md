@@ -42,7 +42,7 @@ After that, you can just do `$ ssh [alias name]`
 **Debug**
 1. Make sure `AllowAgentForwarding` is set to `yes` in `sshd_config`.
 
-2. In jump host run below command, tt should have a value.
+2. In jump host run below command, it should have a value.
 
         $ echo "$SSH_AUTH_SOCK"
 
